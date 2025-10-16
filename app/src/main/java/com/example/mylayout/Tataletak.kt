@@ -34,8 +34,6 @@ fun TataletakColum(modifier: Modifier) {
     }
 }
 
----
-
 @Composable
 fun TataletakRow(modifier: Modifier) {
     Row(
@@ -48,8 +46,6 @@ fun TataletakRow(modifier: Modifier) {
         Text(text = "Komponen4")
     }
 }
-
----
 
 @Composable
 fun TataletakBox(modifier: Modifier) {
@@ -65,8 +61,6 @@ fun TataletakBox(modifier: Modifier) {
         Text(text = "Box 2")
     }
 }
-
----
 
 @Composable
 fun TataletakCostumHR(modifier: Modifier) {
@@ -92,8 +86,6 @@ fun TataletakCostumHR(modifier: Modifier) {
     }
 }
 
----
-
 @Composable
 fun TataletakRowColom(modifier: Modifier) {
     Row(
@@ -112,8 +104,6 @@ fun TataletakRowColom(modifier: Modifier) {
         }
     }
 }
-
----
 
 @Composable
 fun TataletakBoxColumnRow(modifier: Modifier) {
