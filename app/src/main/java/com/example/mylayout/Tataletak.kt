@@ -2,163 +2,176 @@ package com.example.mylayout
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.mylayout.R // <-- Import R class untuk mengatasi 'Unresolved reference'
+
+// --- Composable lain yang sudah ada ---
 
 @Composable
-fun TataletakColum(modifier: Modifier) {
-    Column(modifier = modifier.padding(top = 20.dp, start = 20.dp, end = 20.dp)) {
-        Text(text = "Komponen1")
-        Text(text = "Komponen2")
-        Text(text = "Komponen3")
-        Text(text = "Komponen4")
+fun TataletakColumn(modifier: Modifier = Modifier) {
+    Column(modifier = modifier.padding(20.dp)) {
+        Text("Komponen1")
+        Text("Komponen2")
+        Text("Komponen3")
+        Text("Komponen4")
     }
 }
 
 @Composable
-fun TataletakRow(modifier: Modifier) {
+fun TataletakRow(modifier: Modifier = Modifier) {
     Row(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(8.dp),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        Text(text = "Komponen1")
-        Text(text = "Komponen2")
-        Text(text = "Komponen3")
-        Text(text = "Komponen4")
+        Text("Komponen1")
+        Text("Komponen2")
+        Text("Komponen3")
+        Text("Komponen4")
     }
 }
 
 @Composable
-fun TataletakBox(modifier: Modifier) {
+fun TataletakBox(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
-            .fillMaxHeight()
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .height(100.dp)
+            .background(Color.LightGray),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Box 1")
-        Text(text = "Column 1")
-        Text(text = "Row 2")
-        Text(text = "Box 2")
+        Text("Ini di dalam Box", fontWeight = FontWeight.Bold)
     }
 }
 
 @Composable
-fun TataletakCostumHR(modifier: Modifier) {
-    Column {
+fun TataletakColumnRow(modifier: Modifier = Modifier) {
+    Column(modifier = modifier.padding(8.dp)) {
         Row(
-            modifier = modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            Text(text = "Komponen1Baris1")
-            Text(text = "Komponen2Baris1")
-            Text(text = "Komponen3Baris1")
+            Text("Baris1-Komponen1")
+            Text("Baris1-Komponen2")
+            Text("Baris1-Komponen3")
         }
+
+        Spacer(Modifier.height(10.dp))
+
         Row(
-            modifier = modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            Text(text = "Komponen1Baris2")
-            Text(text = "Komponen2Baris2")
-            Text(text = "Komponen3Baris2")
+            Text("Baris2-Komponen1")
+            Text("Baris2-Komponen2")
+            Text("Baris2-Komponen3")
         }
     }
 }
 
 @Composable
-fun TataletakRowColom(modifier: Modifier) {
+fun TataletakRowColumn(modifier: Modifier = Modifier) {
     Row(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        Column {
-            Text(text = "Komponen1Kolom1")
-            Text(text = "Komponen2Kolom1")
-            Text(text = "Komponen3Kolom1")
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("Kolom1-Komponen1")
+            Text("Kolom1-Komponen2")
+            Text("Kolom1-Komponen3")
         }
-        Column {
-            Text(text = "Komponen1Kolom2")
-            Text(text = "Komponen2Kolom2")
-            Text(text = "Komponen3Kolom2")
+
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("Kolom2-Komponen1")
+            Text("Kolom2-Komponen2")
+            Text("Kolom2-Komponen3")
         }
     }
 }
 
 @Composable
-fun TataletakBoxColumnRow(modifier: Modifier) {
-    // Pastikan file 'notasinaton.png' (atau format lain) ada di folder res/drawable
-    val gambar = painterResource(id = R.drawable.notasinaton)
+fun TataletakBoxColumnRow(modifier: Modifier = Modifier) {
+    // Pastikan Anda memiliki gambar bernama 'van_gogh.png' di folder res/drawable
+    val gambar = painterResource(id = R.drawable.van_gogh)
 
-    Column {
+    // Definisikan gaya teks dengan bayangan untuk judul utama
+    val textStyleWithShadow = TextStyle(
+        fontFamily = FontFamily.Serif,
+        fontWeight = FontWeight.Bold,
+        fontSize = 80.sp,
+        color = Color(0xFF009688), // Warna Teal
+        shadow = Shadow(
+            color = Color.Black.copy(alpha = 0.5f),
+            offset = Offset(x = 4f, y = 4f),
+            blurRadius = 8f
+        )
+    )
+
+    // Definisikan gaya teks untuk nama
+    val nameTextStyle = TextStyle(
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Medium,
+        fontSize = 20.sp,
+        color = Color.DarkGray
+    )
+
+    // Layout utama — seluruh konten di tengah layar
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(Color.White), // latar putih
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Box(
-            modifier = modifier
-                .height(110.dp)
-                .background(color = Color.Yellow)
-                .fillMaxWidth(),
+            modifier = Modifier
+                .size(300.dp) // area gambar + teks
+                .background(Color.Transparent),
             contentAlignment = Alignment.Center
         ) {
             Image(
                 painter = gambar,
-                contentDescription = "Gambar Notasi Musik", // Deskripsi konten yang lebih baik
-                contentScale = ContentScale.Fit
+                contentDescription = "Lukisan Van Gogh",
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.size(800.dp)
             )
+
             Text(
-                text = "My Music",
-                fontSize = 50.sp,
-                color = Color.Red,
-                fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.Cursive,
-                modifier = Modifier.align(alignment = Alignment.Center)
+                text = "Van Gogh",
+                style = textStyleWithShadow, // Terapkan gaya teks yang sudah dibuat
+                modifier = Modifier.align(Alignment.Center)
             )
         }
 
-        Spacer(modifier = Modifier.height(height = 10.dp))
 
-        Box(
-            modifier = modifier
-                .fillMaxSize()
-                .height(500.dp)
-                .background(color = Color.Cyan),
-            contentAlignment = Alignment.Center
-        ) {
-            Column {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Text(text = "Col1 Row1 Komponen1")
-                    Text(text = "Col1 Row1 Komponen2")
-                    Text(text = "Col1 Row1 Komponen3")
-                }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceEvenly
-                ) {
-                    Text(text = "Col1 Row2 Komponen1")
-                    Text(text = "Col1 Row2 Komponen2")
-                    Text(text = "Col1 Row2 Komponen3")
-                }
-            }
-        }
+        Spacer(modifier = Modifier.height(16.dp)) // Memberi jarak
+
+        Text(
+            text = "Hafizh Harimurti 216",
+            style = nameTextStyle // Menerapkan gaya teks untuk nama
+        )
+
     }
 }
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun DefaultPreview() {
+    TataletakBoxColumnRow()
+}
+
