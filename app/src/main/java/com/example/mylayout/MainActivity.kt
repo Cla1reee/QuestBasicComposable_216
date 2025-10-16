@@ -9,7 +9,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.example.mylayout.ui.theme.MyLayoutTheme
 
-// Import fungsi composable yang Anda buat
 import com.example.mylayout.TataletakBoxColumnRow
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +17,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyLayoutTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    // Ganti fungsi Greeting dengan TataletakBoxColumnRow
                     TataletakBoxColumnRow(modifier = Modifier.padding(innerPadding))
                 }
             }
