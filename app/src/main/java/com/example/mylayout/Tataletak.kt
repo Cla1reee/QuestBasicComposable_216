@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.mylayout.R // <-- Import R class untuk mengatasi 'Unresolved reference'
 
 @Composable
 fun TataletakColum(modifier: Modifier) {
@@ -105,6 +106,7 @@ fun TataletakRowColom(modifier: Modifier) {
 
 @Composable
 fun TataletakBoxColumnRow(modifier: Modifier) {
+    // Pastikan file 'notasinaton.png' (atau format lain) ada di folder res/drawable
     val gambar = painterResource(id = R.drawable.notasinaton)
 
     Column {
@@ -117,7 +119,7 @@ fun TataletakBoxColumnRow(modifier: Modifier) {
         ) {
             Image(
                 painter = gambar,
-                contentDescription = null,
+                contentDescription = "Gambar Notasi Musik", // Deskripsi konten yang lebih baik
                 contentScale = ContentScale.Fit
             )
             Text(
